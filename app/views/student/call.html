@@ -1,0 +1,43 @@
+<style>
+    html {
+        overflow: hidden !important;
+    }
+</style>
+<div id="loading-modal" class="loading-modal">
+    <img class="loading-image" src="images/loading-spin.svg">
+</div>
+<div ng-include="'views/templates/student/modal-feedback.html'">
+</div>
+<div ng-include="'views/templates/call/modal-report-user.html'">
+</div>
+<div ng-include="'views/templates/call/modal-report-user-finish.html'">
+</div>
+</div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/student-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container">
+        <section id="content">
+            <div class="jumbotron">
+                <div class="">
+                    <div class="row bg-call">
+                        <!-- <h1>{{CallerElderly.idoso.id}}</h1>
+                        <a href="#/student/home">voltar teste</a>
+                        <button ng-click="stop()">Desligar</button>
+                        <video id="user-video" autoplay="autoplay" class="responsive-video" style="display: inline;" muted></video>
+                        <video id="remote-video" autoplay="autoplay" class="responsive-video" style="display: inline;"></video> -->
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <center>
+                                <img id="btn-desligar" ng-click="stop()" src="../../images/desligar.png" class="img img-responsive hvr-float-shadow btn-desligar-call">
+                                <img id="btn-denunciar" ng-click="stop()" src="../../images/denunciar.png" class="img img-responsive hvr-float-shadow btn-denunciar-call">
+                                <video id="user-video" autoplay="autoplay" class="responsive-video video-user" muted style="margin-left: 0px;"></video>
+                                <video id="remote-video" autoplay="autoplay" class="responsive-video video-remote"></video>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

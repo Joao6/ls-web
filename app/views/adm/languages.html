@@ -1,0 +1,138 @@
+<div id="updateLanguage" class="modal fade modal-3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-radius: 8px; width: 80%;">
+            <div class="modal-header fundo-cabecalho-modal-azul">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">{{'language.edit' | translate}}</h4>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <a href="">
+                                <img src="../../images/cancelar.png" style="width: 30px;" />
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form name="linguaForm">
+                    <div id="input-name" class="form-group has-feedback">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label for="lingua-name" class="label-blue">{{'profile.name' | translate}}</label>
+                            <input id="lingua-name" name="name" type="text" class="form-control input-large" placeholder="{{'profile.name' | translate}}"
+                                ng-model="lingua.nome" ng-required="true">
+                            <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': linguaForm.name.$valid, 'glyphicon-remove-circle': linguaForm.name.$error}"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="margin: 90px auto 10px auto;">
+                <center>
+                    <button ng-click="updateLingua(lingua)" type="button" class="btn-branco-2 hvr-float-shadow">{{'language.ok' | translate}}</button>
+                    <button type="button" class="btn-verde hvr-float-shadow" data-dismiss="modal">{{'language.nok' | translate}}</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ######################################################################################### -->
+<div id="deleteLanguage" class="modal fade modal-3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-radius: 8px; width: 80%;">
+            <div class="modal-header fundo-cabecalho-modal-vermelho">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">{{'language.delete' | translate}}</h4>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <a href="">
+                                <img src="../../images/cancelar.png" style="width: 30px;" />
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div>
+                        {{'language.text1' | translate}}
+                        <b>{{'language.text2' | translate}}</b>{{'language.text3' | translate}}
+                    </div>
+                    <br />
+                    <br />
+                    <button ng-click="deleteLingua(lingua)" type="button" class="btn-vermelho hvr-float-shadow">{{'language.ok' | translate}}</button>
+                    <button type="button" class="btn-branco-2 hvr-float-shadow" data-dismiss="modal">{{'language.nok' | translate}}</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ######################################################################################### -->
+<div ng-include="'views/templates/adm/adm-side-nav.html'">
+</div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/adm/adm-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container">
+        <section id="content">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <h3 class="gradient-text-blue">{{'language.list' | translate}}</h3>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right" style="margin-top: 10px;">
+                            <div id="input-name" class="form-group has-feedback">
+                                <input id="search" type="text" class="form-control input-large" placeholder="{{'language.search' | translate}}" ng-change="getLinguas(search)"
+                                    ng-model="search">
+                                <span class="glyphicon glyphicon-search form-control-feedback" style="margin-top: auto;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="linguaListIsEmpty()">
+                        <div style="margin-top: 15px;">
+                            <img class="img img-responsive" src="../../images/idosos-home.png">
+                            <h4>{{'language.list.error' | translate}}</h4>
+                        </div>
+                    </div>
+                    <div ng-hide="linguaListIsEmpty()">
+                        <div class="row panel-list-separate" ng-repeat="lingua in linguaList">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel-list">
+                                    <div class="row" style="padding: 8px;">
+                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                            <h5>
+                                                <span class="span-list">{{'list.name' | translate}}</span>
+                                            </h5>
+                                            <h5>{{lingua.nome}}</h5>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                            <h4 class="btn-margin">{{'list.adm' | translate}}</h4>
+                                            <a href="">
+                                                <div ng-click="openModal('updateLanguage', lingua)" class="col-lg-5 col-md-12 col-sm-12 col-xs-12 btn-branco-2 hvr-float-shadow btn-margin">{{'profile.edit' | translate}}</div>
+                                            </a>
+                                            <div ng-click="openModal('deleteLanguage', lingua)" class="col-lg-5 col-md-12 col-sm-12 col-xs-12 btn-vermelho hvr-float-shadow btn-margin">{{'profile.delete' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <center style="margin: 25px auto 10px auto;">
+                            <a ng-class="{'disabled-link': (offset - 10) < 0 || count < offset}" ng-if="(offset - 10) >= 0" href="" ng-click="paginationLingua(search, offset - 10, 'previous')">
+                                <img class="hvr-float-shadow" style="margin-right: 10px;" src="../../images/arrow-left.png">
+                            </a>
+                            <a ng-class="{'disabled-link': (offset + 10) >= count}" ng-if="(offset + 10) < count" href="" ng-click="paginationLingua(search, offset + 10, 'next')">
+                                <img class="hvr-float-shadow" style="margin-left: 10px;" src="../../images/arrow-right.png">
+                            </a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

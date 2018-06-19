@@ -1,0 +1,8 @@
+<div class="container">
+    <h2>You don't have permission for access this page.</h2> 
+    <p>Click button below to back your homepage.</p>
+    <a class="btn btn-large blue" ng-show="$root.userLogged.type === 'adm'" href="#/adm/home">Home</a>   
+    <a class="btn btn-large blue" ng-show="$root.userLogged.type === 'ido'" href="#/student/home">Home</a>   
+    <a class="btn btn-large blue" ng-show="$root.userLogged.type === 'est'" href="#/elderly/home">Home</a>   
+    <a class="btn btn-large blue" ng-show="$root.userLogged.type === 'est'" href="#/institute/home">Home</a>   
+</div>

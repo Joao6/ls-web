@@ -1,0 +1,96 @@
+<form name="studentForm" class="form col-lg-12 col-md-12 col-sm-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <h4>{{"register.student.title" | translate}}</h4>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="input-name" class="form-group has-feedback">
+                <div class="col-lg-12">
+                    <label for="student-name" class="label-blue">{{'register.name' | translate}}</label>
+                    <input id="student-name" name="name" type="text" class="form-control input-large" placeholder="{{'register.name.student' | translate}}" ng-model="student.nome"
+                        ng-required="true">
+                    <span ng-show="studentForm.name.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': studentForm.name.$valid, 'glyphicon-remove-circle': studentForm.name.$error}"></span>
+                </div>
+            </div>
+
+            <div id="input-email" class="form-group has-feedback">
+                <div class="col-lg-12 input-separate">
+                    <label for="student-email" class="label-blue">{{'register.email' | translate}}</label>
+                    <input id="student-email" type="email" name="email" class="form-control input-large" placeholder="{{'register.email.student' | translate}}" ng-model="student.email"
+                        ng-required="true" ng-blur="validateEmail('estudante', student.email)">
+                    <span ng-show="studentForm.email.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': studentForm.email.$valid && emailOk, 'glyphicon-remove-circle': studentForm.email.$error || !emailOk}"></span>
+                </div>
+            </div>
+
+            <div id="input-password" class="form-group has-feedback">
+                <div class="col-lg-12 input-separate">
+                    <label for="student-password" class="label-blue">{{'register.password' | translate}}</label>
+                    <input id="student-password" name="password" type="password" class="form-control input-large" placeholder="{{'register.password.placeholder' | translate}}"
+                        ng-model="student.senha" ng-required="true" ng-minlength="6" ng-maxlength="20">
+                    <span ng-show="studentForm.password.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': studentForm.password.$valid && student.senha === student.confSenha, 'glyphicon-remove-circle': studentForm.password.$error}"></span>
+                </div>
+            </div>
+
+            <div id="input-password-2" class="form-group has-feedback">
+                <div class="col-lg-12 input-separate">
+                    <label for="student-password-2" class="label-blue">{{'register.confirm' | translate}}</label>
+                    <input id="student-password-2" name="password2" type="password" class="form-control input-large" placeholder="{{'register.confirm.placeholder' | translate}}"
+                        ng-model="student.confSenha" ng-required="true" ng-minlength="6" ng-maxlength="20">
+                    <span ng-show="studentForm.password2.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': studentForm.password2.$valid && student.senha === student.confSenha, 'glyphicon-remove-circle': studentForm.password2.$error}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="col-md" style="margin-top: 25px;">
+                <div class="dropzone"></div>
+                <input type="hidden" id="urlImageStudent" ng-model="student.imagem">
+            </div>
+            <div id="div-btn-view-img" class="col-lg-12" style="text-align: center; display: none;">
+                <div ng-click="openModal('imgUpload')" class="btn-branco-2 hvr-float-shadow">{{'register.image' | translate}}</div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top: 15px;">
+                <div ng-click="registerNewStudent(student)" ng-disabled="studentForm.$invalid" class="btn-full btn-azul-principal hvr-float-shadow">{{'register.save' | translate}}</div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top: 15px;">
+                <a href="#/main" class="btn-link">
+                    <div class="btn-full hvr-float-shadow btn-roxo-principal">{{'register.back' | translate}}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+<div id="feedback-register-success" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="display:none;margin-top: 10px;">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <img src="../../images/idoso.png" height="130">
+    </div>
+    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+        <h4 class="feedback-register success">{{'register.msg.success' | translate}}</h4>
+        <p class="feedback-register-p">{{'register.msg.success.text1' | translate}}<a href="#/main">{{'register.msg.success.text2' | translate}}</a>{{'register.msg.success.text3' | translate}}</p>
+    </div>
+</div>
+<div id="feedback-register-error" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="display:none; margin-top: 10px;">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <img src="../../images/idoso-triste.png" height="130">
+    </div>
+    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+        <h4 class="feedback-register error">{{'register.msg.error' | translate}}</h4>
+        <p class="feedback-register-p">{{'register.msg.error.text' | translate}}</p>
+    </div>
+</div>
+<script>
+    var feedback = function (res) {
+        if (res.success === true) {
+            document.getElementById('urlImageStudent').value = res.data.link
+            //TODO: Modal de visualização da imagem
+            document.getElementById('img-upload-modal').src = res.data.link
+            document.getElementById('div-btn-view-img').style.display = 'block';
+            $('#imgUpload').modal()
+        }
+    };
+
+    new Imgur({
+        clientid: 'bc1af6543dc00e5',
+        callback: feedback
+    });
+
+</script>

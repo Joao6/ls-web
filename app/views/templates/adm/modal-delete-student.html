@@ -1,0 +1,30 @@
+<div id="disableStudent" class="modal fade modal-3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-radius: 8px; width: 80%;">
+            <div class="modal-header fundo-cabecalho-modal-azul">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">{{'adm.student.title' | translate}}</h4>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <a href="">
+                                    <img src="../../images/cancelar.png" style="width: 30px;"/>
+                                </a>
+                            </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div>
+                        {{'adm.student.text1' | translate}}<b>{{'adm.student.text2' | translate}}</b>{{'adm.student.text3' | translate}}
+                    </div>
+                    <br /><br />
+                    <button ng-click="deleteStudent(student)" type="button" class="btn-vermelho hvr-float-shadow">{{'ins.yes' | translate}}</button>
+                    <button type="button" class="btn-branco-2 hvr-float-shadow" data-dismiss="modal">{{'ins.no' | translate}}</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>

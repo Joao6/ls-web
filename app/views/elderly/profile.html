@@ -1,0 +1,131 @@
+<div id="modal-upload-img" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-azul" style="border-radius: 8px;height: 50px;">
+                <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                    <h4 class="modal-title">Selecione sua foto</h4>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <a href="">
+                        <img src="../../images/cancelar.png" style="width: 35px;"/>
+                    </a>
+                </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="dropzone"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="loading-modal" class="loading-modal">
+    <img class="loading-image" src="images/loading-spin.svg">
+</div>
+<div ng-include="'views/templates/elderly/elderly-side-nav.html'"></div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/elderly/elderly-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container">
+        <section id="content">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">
+                        <form class="form" name="formElderly">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <h4 class="title-content">Edite seus dados abaixo</h4>
+                                <div id="input-name" class="form-group has-feedback">
+                                    <div class="col-lg-12">
+                                        <label for="elderly-name" class="label-blue">Nome</label>
+                                        <input id="elderly-name" name="name" type="text" class="form-control input-large" placeholder="Nome do Idoso" ng-model="userLogged.nome"
+                                            ng-required="true">
+                                        <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': formElderly.name.$valid, 'glyphicon-remove-circle': formElderly.name.$error}"></span>
+                                    </div>
+                                </div>
+                                <div id="input-code" class="form-group has-feedback">
+                                    <div class="col-lg-12 input-separate" style="margin-bottom: 30px;">
+                                        <label for="elderly-code" class="label-blue">Código de acesso</label>
+                                        <input id="elderly-code" type="text" class="form-control input-large" placeholder="Código de acesso" ng-readonly="true" ng-model="userLogged.codigo"
+                                            ng-required="true">
+                                        <span class="glyphicon form-control-feedback glyphicon-ok-circle"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <center>
+                                        <h4>Línguas faladas pelo tutor</h4>
+                                    </center>
+                                    <div class="align-center-content" style="padding: 0px 50px 0px 50px;">
+
+                                        <div class="checkbox-lingua">
+                                            <span>Inglês</span>
+                                            <input type="checkbox" id="checkbox-ingles" class="regular-checkbox big-checkbox" />
+                                            <label for="checkbox-ingles"></label>
+                                        </div>
+                                        <div class="checkbox-lingua">
+                                            <span>Português</span>
+                                            <input type="checkbox" id="checkbox-portugues" class="regular-checkbox big-checkbox" />
+                                            <label for="checkbox-portugues"></label>
+                                        </div>
+                                        <div class="checkbox-lingua">
+                                            <span>Espanhol</span>
+                                            <input type="checkbox" id="checkbox-espanhol" class="regular-checkbox big-checkbox" />
+                                            <label for="checkbox-espanhol"></label>
+                                        </div>
+                                        <div class="checkbox-lingua">
+                                            <span>Francês</span>
+                                            <input type="checkbox" id="checkbox-frances" class="regular-checkbox big-checkbox" />
+                                            <label for="checkbox-frances"></label>
+                                        </div>
+                                        <div class="checkbox-lingua">
+                                            <span>Outras</span>
+                                            <div class="regular-checkbox big-checkbox" id="checkbox-outras"></div>
+                                            <label for="checkbox-alemao"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-sm-heght">
+                                <div class="div-img-upload align-center-content">
+                                    <img id="img-profile" ng-click="openModal('modal-upload-img')" class="img img-circle" width="220" height="220" src="{{userLogged.imagem || 'https://i.imgur.com/9RAAfJ5.png'}}"
+                                        style="border: 8px solid #1c8cde;" />
+                                </div>
+                                <div class="align-center-content">
+                                    <h4>Clique na imagem para alterá-la</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div ng-click="updateProfile(userLogged)" class="btn-full btn-azul-principal hvr-float-shadow">SALVAR</div>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="feedback-register-success" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="display: none;margin-top: 10px;">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <img src="../../images/idoso.png" height="130">
+                            </div>
+                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                <h4 class="feedback-register success">Dados atualizados com sucesso!</h4>
+                                <p class="feedback-register-p">Seus dados foram salvos e atualizados. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    var feedback = function (res) {
+        if (res.success === true) {
+            document.getElementById('img-profile').src = res.data.link
+            $('#modal-upload-img').modal('hide')
+        }
+    };
+    new Imgur({
+        clientid: 'bc1af6543dc00e5',
+        callback: feedback
+    });
+
+</script>

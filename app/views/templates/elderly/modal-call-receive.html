@@ -1,0 +1,30 @@
+<div id="modalCall" class="modal fade modal-3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-verde">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">{{'call.receive' | translate}}</h4>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <a href="">
+                                    <img src="../../images/cancelar.png" style="width: 30px;"/>
+                                </a>
+                            </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div id="name-student">
+                        
+                    </div>
+                    <br /><br />
+                    <button type="button" ng-click="accept()" data-dismiss="modal" class="btn-verde hvr-float-shadow">{{'call.yes' | translate}}</button>
+                    <button type="button" ng-click="decline()" class="btn-cinza-modal hvr-float-shadow" data-dismiss="modal">{{'call.no' | translate}}</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-info-elderly" tabindex="1040" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Elderly registered with success</h3>
+            </div>
+            <div class="modal-body">
+                <h5>Access data</h5>
+                <span><b>Access code: </b>{{elderlyInfo.codigo}}</span>
+                <br>
+                <span><b>Password: </b>{{elderlyInfo.senha}}</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button ng-click="setTabElderly('list')" type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

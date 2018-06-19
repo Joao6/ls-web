@@ -1,0 +1,73 @@
+<div ng-include="'views/templates/student-side-nav.html'"></div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/student-header.html'"></div>
+</section>
+<div id="content-without-side-nav" ng-init="getCallList(userLogged.id, nameElderly, offset)">
+    <div class="container">
+        <section id="content" style="margin-top: 70px;">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">                            
+                            <h3 class="gradient-text-blue">{{'student.calls.title' | translate}}</h3>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top: 10px;">
+                            <div id="input-name" class="form-group has-feedback">
+                                <input id="search" type="text" class="form-control input-large" ng-change="getCallList(userLogged.id, search, offset)" placeholder="{{'student.reports.search' | translate}}"
+                                    ng-model="search">
+                                <span class="glyphicon glyphicon-search form-control-feedback" style="top: 0px;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="callListIsEmpty()">
+                        <div style="margin-top: 15px;">
+                            <img class="img img-responsive" src="../../images/idosos-home.png">
+                            <h4>{{'student.calls.error' | translate}}</h4>
+                        </div>
+                    </div>
+                    <div ng-hide="callListIsEmpty()">
+                        <div class="row panel-list-separate" ng-repeat="call in callList">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel-list" style="margin-top: 10px;">
+                                    <div class="row" style="padding: 2px;">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <h5>
+                                                <span class="span-list">{{'student.calls.tutor' | translate}}: </span>{{call.idoso.nome}}
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                            <h5>
+                                                <span class="span-list">{{'student.calls.date' | translate}}: </span>{{call.dataHoraInicio | date:
+                                                'dd/MM/yyyy'}}
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                            <h5>
+                                                <span class="span-list">{{'student.calls.duration' | translate}}: </span>{{call.duracao | number:0}}
+                                                minutos
+                                            </h5>
+                                        </div>
+                                        <!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="text-align: center;">
+                                            <button ng-click="" class="btn-roxo-2 hvr-float-shadow">{{"student.calls.audio" | translate}}</button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <center style="margin: 25px auto 10px auto;">
+                                <a ng-class="{'disabled-link': (offset - 10) < 0}" ng-if="(offset - 10) >= 0" href="" ng-click="paginationCall(userLogged.id, search, offset - 10, 'previous')">
+                                    <img class="hvr-float-shadow" style="margin-right: 10px;" src="../../images/arrow-left.png">
+                                </a>
+                                <a ng-class="{'disabled-link': (offset + 10) >= count}" ng-if="(offset + 10) < count" href="" ng-click="paginationCall(userLogged.id, search, offset + 10, 'next')">
+                                    <img class="hvr-float-shadow" style="margin-left: 10px;" src="../../images/arrow-right.png">
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+</div>
+</div>

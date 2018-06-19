@@ -1,0 +1,103 @@
+<form name="instituteForm" class="col-lg-12 col-md-12 col-sm-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <h4>{{"register.institute.title" | translate}}</h4>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="input-name" class="form-group has-feedback">
+                <div class="col-lg-12">
+                    <label for="institute-name" class="label-blue">{{"register.name" | translate}}</label>
+                    <input id="institute-name" name="name" type="text" class="form-control input-large" placeholder="{{'register.name.institute' | translate}}" ng-model="institute.nome"
+                        ng-required="true">
+                    <span ng-show="instituteForm.name.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': instituteForm.name.$valid, 'glyphicon-remove-circle': instituteForm.name.$error}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="input-email" class="form-group has-feedback">
+                <div class="col-lg-12">
+                    <label for="institute-email" class="label-blue">{{"register.email" | translate}}</label>
+                    <input id="institute-email" type="email" name="email" class="form-control input-large" placeholder="{{'register.email.institute' | translate}}"
+                        ng-model="institute.email" ng-required="true" ng-blur="validateEmail('instituicao', institute.email)">
+                    <span ng-show="instituteForm.email.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': instituteForm.email.$valid && emailOk, 'glyphicon-remove-circle': instituteForm.email.$error || !emailOk}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="input-password" class="form-group has-feedback">
+                <div class="col-lg-12 input-separate">
+                    <label for="institute-password" class="label-blue">{{"register.password" | translate}}</label>
+                    <input id="institute-password" name="password" type="password" class="form-control input-large" placeholder="{{'register.password.placeholder' | translate}}"
+                        ng-model="institute.senha" ng-required="true" ng-minlength="6" ng-maxlength="20">
+                    <span ng-show="instituteForm.password.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': instituteForm.password.$valid && institute.senha === institute.confSenha, 'glyphicon-remove-circle': instituteForm.password.$error}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="input-password" class="form-group has-feedback">
+                <div class="col-lg-12 input-separate">
+                    <label for="institute-password-2" class="label-blue">{{"register.confirm" | translate}}</label>
+                    <input id="institute-password-2" name="password2" type="password" class="form-control input-large" placeholder="{{'register.password.placeholder' | translate}}"
+                        ng-model="institute.confSenha" ng-required="true" ng-minlength="6" ng-maxlength="20">
+                    <span ng-show="instituteForm.password2.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': instituteForm.password2.$valid && institute.senha === institute.confSenha, 'glyphicon-remove-circle': instituteForm.password2.$error}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="input-telefone" class="form-group has-feedback">
+                <div class="col-lg-12 input-separate">
+                    <label for="institute-telefone" class="label-blue">{{"register.tel" | translate}}</label>
+                    <input id="institute-telefone" type="text" name="telefone" class="form-control input-large" placeholder="{{'register.name.institute' | translate}}"
+                        ng-model="institute.telefone" ng-required="true">
+                    <span ng-show="instituteForm.telefone.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': instituteForm.telefone.$valid, 'glyphicon-remove-circle': instituteForm.telefone.$error}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div id="input-registro" class="form-group has-feedback">
+                <div class="col-lg-12 input-separate">
+                    <label for="institute-registro" class="label-blue">{{"register.cod" | translate}}</label>
+                    <input id="institute-registro" type="text" name="registro" class="form-control input-large" placeholder="{{'register.cod.institute' | translate}}"
+                        ng-model="institute.registroLegal" ng-required="true">
+                    <span ng-show="instituteForm.registro.$dirty && !registered" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': instituteForm.registro.$valid, 'glyphicon-remove-circle': instituteForm.registro.$error}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-right">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top: 15px;">
+                <div ng-click="registerNewInstitute(institute)" class="btn-full btn-azul-principal hvr-float-shadow">{{"register.save" | translate}}</div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top: 15px;">
+                <a href="#/main" class="btn-link">
+                    <div class="btn-full hvr-float-shadow btn-roxo-principal">{{"register.back" | translate}}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+<div id="feedback-register-success" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="display:none;margin-top: 10px;">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <img src="../../images/idoso.png" height="130">
+    </div>
+    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+        <h4 class="feedback-register success">{{"register.msg.success" | translate}}</h4>
+        <p class="feedback-register-p">{{"register.msg.success.institute" | translate}}</p>
+    </div>
+</div>
+<div id="feedback-register-error" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="display:none; margin-top: 10px;">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <img src="../../images/idoso-triste.png" height="130">
+    </div>
+    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+        <h4 class="feedback-register error">{{"register.msg.error" | translate}}</h4>
+        <p class="feedback-register-p">{{"register.msg.error.text" | translate}}</p>
+    </div>
+</div>

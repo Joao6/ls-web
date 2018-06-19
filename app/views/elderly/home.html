@@ -1,0 +1,48 @@
+<!-- aqui será a página do idoso, onde ele ficará aguardando algúem chamá-lo para conversar. (WebSocket) -->
+<!-- <h1>Estou aguardando...</h1>
+<span>Usuário logado: {{$root.userLogged.nome}}</span> -->
+<style>
+    html {
+        overflow: hidden !important;
+    }
+</style>
+<div id="loading-modal" class="loading-modal">
+    <img class="loading-image" src="images/loading-spin.svg">
+</div>
+<div ng-include="'views/templates/elderly/modal-feedback.html'">
+</div>
+<div ng-include="'views/templates/call/modal-report-user.html'">
+</div>
+<div ng-include="'views/templates/call/modal-report-user-finish.html'">
+</div>
+<div ng-include="'views/templates/elderly/modal-call-receive.html'"></div>
+<div ng-include="'views/templates/elderly/elderly-side-nav.html'"></div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/elderly/elderly-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container">
+        <section id="content">
+            <div class="jumbotron">
+                <div class="">
+                    <div class="row bg-call">
+                        <!-- <img src="../../images/world-map.png" style="width: 100%;height: 100%;"> -->
+                        <!-- <button ng-click="accept()">Aceitar</button> -->
+                        <!-- <button ng-click="stop()">Desligar</button> -->
+                        <!-- <h1>{{'logo.title'| translate}}</h1> -->
+                        <!-- <h4 id="title-call">Aguarde até que um estudante lhe chame para conversar</h4> -->
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <center>
+                                <img id="btn-desligar" ng-click="stop()" src="../../images/desligar.png" class="img img-responsive call hvr-float-shadow btn-desligar-call">
+                                <img id="btn-denunciar" ng-click="stop()" src="../../images/denunciar.png" class="img img-responsive call hvr-float-shadow btn-denunciar-call">
+                                <video id="user-video" autoplay="autoplay" class="responsive-video call video-user" muted style="margin-left: 249px;"></video>
+                                <video id="remote-video" autoplay="autoplay" class="responsive-video video-remote call"></video>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="lib/peer.js/peer.min.js"></script>

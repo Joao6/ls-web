@@ -1,0 +1,28 @@
+<div id="detailReport" class="modal fade modal-4" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-roxo">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">{{"institute.report.modal.title" | translate}}</h4>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <a href="">
+                                <img src="../../images/cancelar.png" style="width: 30px;" />
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <center>                                        
+                    <textarea ng-readonly="true" ng-model="report.descricao" style="background-color: #f4f4f4; border-radius: 5px; resize: none;" rows="4" class="form-control" maxlength="500" placeholder="Insira o motivo da denúncia (max. 500 caracteres)"></textarea>
+                    <br />
+                    <br />                    
+                    <button type="button" class="btn-branco-2 hvr-float-shadow" data-dismiss="modal">Ok</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>

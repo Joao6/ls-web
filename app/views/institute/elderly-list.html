@@ -1,0 +1,73 @@
+<div ng-include="'views/templates/institute/modal-delete-elderly.html'"></div>
+<div ng-include="'views/templates/institute-side-nav.html'">
+</div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/institute-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container">
+        <section id="content">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h3 class="gradient-text-blue">{{'elderly.list' | translate}}</h3>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top: 10px;">
+                            <div id="input-name" class="form-group has-feedback">
+                                <input id="search" type="text" class="form-control input-large" ng-change="getElderlyList(search)" placeholder="{{'elderly.search' | translate}}"
+                                    ng-model="search">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="elderlyListIsEmpty()">
+                        <div style="margin-top: 15px;">
+                            <img class="img img-responsive" src="../../images/idosos-home.png">
+                            <h4>{{'elderly.list.error' | translate}}</h4>
+                        </div>
+                    </div>
+                    <div ng-hide="elderlyListIsEmpty()">
+                        <div class="row panel-list-separate" ng-repeat="elderly in elderlyList">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel-list">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="text-align: center;">
+                                            <img class="img img-circle" src="{{elderly.imagem || 'https://i.imgur.com/9RAAfJ5.png'}}" width="100" height="100" style="border: 1px solid #0084dd;">
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-top: 20px;">
+                                            <h5>{{elderly.nome}}</h5>
+                                            <h5>{{'elderly.list.cod' | translate}}{{elderly.codigo}}</h5>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 20px;">
+                                            <h5>{{'elderly.list.language' | translate}}</h5>
+                                            <!-- <h5>Inglês | Português</h5> -->
+                                            <span style="color: #888888;font-weight: bold;" ng-repeat="lingua in elderly.linguaList">{{lingua.nome}} | </span>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <h4>{{'elderly.adm' | translate}}</h4>
+                                            <h5>{{'elderly.account' | translate}}</h5>                                        
+                                            <a href="#/institute/elderlies/{{elderly.id}}/edit">
+                                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 btn-branco-2 hvr-float-shadow btn-margin">{{'profile.edit' | translate}}</div>
+                                            </a>
+                                            <div ng-click="openModal('deleteElderly', elderly)" class="col-lg-5 col-md-5 col-sm-12 col-xs-12 btn-vermelho hvr-float-shadow btn-margin">{{'profile.delete' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <center style="margin: 25px auto 10px auto;">
+                                <a ng-class="{'disabled-link': (offset - 10) < 0}" ng-if="(offset - 10) >= 0" href="" ng-click="pagination(search, offset - 10, 'previous')">
+                                    <img class="hvr-float-shadow" style="margin-right: 10px;" src="../../images/arrow-left.png">
+                                </a>
+                                <a ng-class="{'disabled-link': (offset + 10) >= count}" ng-if="(offset + 10) < count" href="" ng-click="pagination(search, offset + 10, 'next')">
+                                    <img class="hvr-float-shadow" style="margin-left: 10px;" src="../../images/arrow-right.png">
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        </div>
+    </div>

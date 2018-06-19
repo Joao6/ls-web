@@ -1,0 +1,117 @@
+<div ng-include="'views/templates/institute/modal-select-lingua.html'"></div>
+<div ng-include="'views/templates/main/modal-img-upload.html'"></div>
+<div ng-include="'views/templates/institute-side-nav.html'"></div>
+<div id="loading-modal" class="loading-modal">
+    <img class="loading-image" src="images/loading-spin.svg">
+</div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/institute-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container" ng-init="initElderly()">
+        <section id="content">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">
+                        <form class="form" name="formElderly">
+                            <div class="col-lg-6 col-md-6 col-sm-12">                                
+                                <h3 class="gradient-text-blue">{{'elderly.new' | translate}}</h3>
+                                <div id="input-name" class="form-group has-feedback">
+                                    <div class="col-lg-12">
+                                        <label for="elderly-name" class="label-blue">{{'profile.name' | translate}}</label>
+                                        <input id="elderly-name" name="name" type="text" class="form-control input-large" placeholder="{{'elderly.name.placeholder' | translate}}" ng-model="elderly.nome"
+                                            ng-required="true" ng-click="removeError('input-name')">
+                                        <span ng-show="formElderly.name.$dirty" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': formElderly.name.$valid, 'glyphicon-remove-circle': formElderly.name.$error}"></span>
+                                    </div>
+                                </div>
+                                <div id="input-password" class="form-group has-feedback">
+                                    <div class="col-lg-12 input-separate">
+                                        <label for="elderly-password" class="label-blue">{{'register.password' | translate}}</label>
+                                        <input id="elderly-password" name="password" type="password" class="form-control input-large" placeholder="{{'register.password.placeholder' | translate}}" ng-model="elderly.senha"
+                                            ng-required="true" ng-minlength="6" ng-maxlength="20" ng-click="removeError('input-password')">
+                                        <span ng-show="formElderly.password.$dirty" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': formElderly.password.$valid && elderly.senha === elderly.confSenha, 'glyphicon-remove-circle': formElderly.password.$error}"></span>
+                                    </div>
+                                </div>
+                                <div id="input-password-2" class="form-group has-feedback">
+                                    <div class="col-lg-12 input-separate">
+                                        <label for="elderly-password-2" class="label-blue">{{'register.confirm' | translate}}</label>
+                                        <input id="elderly-password-2" name="password2" type="password" class="form-control input-large" placeholder="{{'register.confirm.placeholder' | translate}}"
+                                            ng-model="elderly.confSenha" ng-required="true" ng-minlength="6" ng-maxlength="20"
+                                            ng-click="removeError('input-password-2')">
+                                        <span ng-show="formElderly.password2.$dirty" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': formElderly.password2.$valid  && elderly.senha === elderly.confSenha, 'glyphicon-remove-circle': formElderly.password2.$error}"></span>
+                                    </div>
+                                </div>
+                                <div id="input-code" class="form-group has-feedback">
+                                    <div class="col-lg-12 input-separate">
+                                        <label for="elderly-code" class="label-blue">{{'elderly.cod' | translate}}</label>
+                                        <input id="elderly-code" type="text" class="form-control input-large" placeholder="{{'elderly.cod' | translate}}" ng-readonly="true" ng-model="elderly.codigo"
+                                            ng-required="true" ng-click="removeError('input-code')">
+                                        <span class="glyphicon form-control-feedback glyphicon-ok-circle"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="col-md" id="img-elderly-new">
+                                    <div class="dropzone"></div>
+                                    <input type="hidden" id="urlImageElderly" ng-model="elderly.imagem">
+                                </div>
+                                <div style="margin-top: 0px;">
+                                    <div class="row align-center-content">
+                                        <h4>{{'elderly.language' | translate}}</h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="align-center-content" style="padding: 0px 50px 0px 50px;">
+                                            <div ng-repeat="lingua in linguas" class="checkbox-lingua">
+                                                <span>{{lingua.nome}}</span>
+                                                <input ng-change="addLingua(lingua)" type="checkbox" id="checkbox-{{lingua.id}}" class="regular-checkbox big-checkbox" value="{{lingua.id}}" ng-model="linguaIdoso"/>
+                                                <label for="checkbox-{{lingua.id}}"></label>
+                                            </div>                                                                                  
+                                            <div ng-click="openModal('modalLingua')" class="checkbox-lingua">
+                                                <span>{{'elderly.other' | translate}}</span>
+                                                <div class="regular-checkbox big-checkbox" id="checkbox-outras"></div>
+                                                <label for="checkbox-outras"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-lg-12" style="margin-top: 10px;">
+                                    <div ng-click="newElderly(elderly)" class="btn-full btn-azul-principal hvr-float-shadow">CADASTRAR</div>
+                                </div> -->
+                            </div>
+                            <div id="feedback-register-success" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="display: none;margin-top: 10px;">
+                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <img src="../../images/idoso.png" height="130">
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                    <h4 class="feedback-register success">{{'elderly.success' | translate}}</h4>
+                                    <p class="feedback-register-p">{{'elderly.success.new' | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 pull-right">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                                    <div ng-click="newElderly(elderly)" class="btn-full btn-azul-principal hvr-float-shadow">{{'register.save' | translate}}</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    var feedback = function (res) {
+        if (res.success === true) {            
+            document.getElementById('urlImageElderly').value = res.data.link
+            document.getElementById('img-upload-modal').src = res.data.link            
+            $('#imgUpload').modal()
+        }
+    };
+
+    new Imgur({
+        clientid: 'bc1af6543dc00e5',
+        callback: feedback
+    });
+
+</script>

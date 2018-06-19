@@ -1,0 +1,38 @@
+{
+  "name": "life-stories",
+  "version": "0.1",
+  "authors": [
+    "Joao Pedro <joaopedro.dedepaula@gmail.com>",
+    "Marcelo Augusto <joaopedro.dedepaula@gmail.com>",
+    "Pedro Arvellos <joaopedro.dedepaula@gmail.com>",
+    "José Mauricio <joaopedro.dedepaula@gmail.com>"
+  ],
+  "description": "Projeto acadêmico de conclusão de curso.",
+   "repository": {
+    "type": "git",
+    "url": "git://gitlab/marcelo_augusto/life-stories"
+  },
+  "ignore": [
+    ".jshintrc",
+    ".editorconfig",
+    ".sass-cache",
+    "npm-debug.log",
+    "sample",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.0",
+    "fullpage.js": "~2.7.7"
+  },
+  "keywords": [
+    "fullpage",
+    "angular",
+    "directive",
+    "jquery",
+    "scrolling",
+    "single_page",
+    "one_page",
+    "sliding"
+  ]
+}

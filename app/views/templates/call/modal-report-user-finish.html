@@ -1,0 +1,33 @@
+<div id="modalReportFinish" class="modal fade modal-4" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-vermelho">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">Reportar abuso ou erro</h4>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <button type="button" ng-click="openModal('modalFeedback')" class="close" data-dismiss="modal" aria-label="Close">
+                            <a href="">
+                                <img src="../../images/cancelar.png" style="width: 30px;" />
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div>
+                        Deseja <b>reportar</b> o seu companheiro de conversa?
+                    </div>
+                    <br />
+                    <textarea ng-model="report.descricao" style="background-color: #f4f4f4; border-radius: 5px; resize: none;" rows="4" class="form-control" maxlength="500" placeholder="Insira o motivo da denúncia (max. 500 caracteres)" ng-required="true"></textarea>
+                    <br />
+                    <br />
+                    <button type="button" ng-click="saveReport(report, true)" data-dismiss="modal" class="btn-vermelho hvr-float-shadow">Denunciar</button>
+                    <button type="button" class="btn-cinza-modal hvr-float-shadow" ng-click="openModal('modalFeedback')" data-dismiss="modal">Cancelar</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>

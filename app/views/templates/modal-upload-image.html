@@ -1,0 +1,32 @@
+<!-- Modal -->
+<!-- <div class="modal fade" id="modal-upload-img" tabindex="1040" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                
+                <croppie ng-if="cropped.source" src="cropped.source" ng-model="cropped.image" options="{boundary:{width:300,height:300}}"></croppie>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Apply</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div id="modal-upload-img" data-backdrop="static" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-azul" style="border-radius: 8px;height: 50px;">
+                <h5 class="modal-title" style="font-weight: bold;font-size: 13pt;">{{'upload.select' | translate}}</h5>
+            </div>
+            <div class="modal-body">
+                <div class="dropzone"></div>                
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn-roxo-2 hvr-float-shadow">{{'upload.cancel' | translate}}</button>
+                <button data-dismiss="modal" class="btn-branco-2 hvr-float-shadow">{{'upload.ok' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

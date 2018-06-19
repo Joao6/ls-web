@@ -1,0 +1,49 @@
+<nav class="navbar navbar-inverse navbar-fixed-left" ng-init="changeIcon()">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 10px 0 10px 25px;">
+                    <img class="logo-collapsed" src="../../images/logo.png" alt="Logo Life Stories" style="width: 50%">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="hvr-float-shadow" id="first-icon">
+                    <a id="home" href="#/institute/home">                        
+                        <img src="../images/home.png">{{'navbar.home' | translate}}
+                    </a>
+                </li>
+                <li class="hvr-float-shadow">
+                    <a id="user" href="#/institute/profile">                        
+                        <img src="../images/user.png">{{'navbar.profile' | translate}}
+                    </a>
+                </li>
+                <li class="hvr-float-shadow">
+                    <a id="cadastrar" href="#/institute/elderlies/new" class="">                        
+                        <img src="../images/cadastrar.png" />{{'navbar.new' | translate}}
+                    </a>
+                </li>
+                <li class="hvr-float-shadow">
+                    <a id="professores" href="#/institute/elderlies">                        
+                        <img src="../images/professores.png">{{'navbar.list' | translate}}
+                    </a>
+                </li>
+                <li class="hvr-float-shadow">
+                    <a id="denuncias" href="#/institute/reports">                        
+                        <img  src="../images/denuncias.png">{{'navbar.msgs' | translate}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

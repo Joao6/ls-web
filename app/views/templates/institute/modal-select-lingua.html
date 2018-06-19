@@ -1,0 +1,35 @@
+<div id="modalLingua" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-azul" style="border-radius: 8px;">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">{{'language.title' | translate}}</h4>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <a href="">
+                                    <img src="../../images/cancelar.png" style="width: 30px;"/>
+                                </a>
+                            </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="height: 300px;overflow: auto;">                
+                <div ng-repeat="lingua in linguaList">
+                    <div class="checkbox" ng-if="lingua.id !== 2 && lingua.id !== 3 && lingua.id !== 6 && lingua.id !== 18">
+                        <label style="color: #888888;font-weight: bold;font-size: 12pt;">
+                            <input ng-change="addLingua(lingua)" type="checkbox" value="{{lingua.id}}" ng-model="linguaIdoso">
+                            {{lingua.nome}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn-branco-2 hvr-float-shadow">{{'language.yes' | translate}}</button>
+                <button data-dismiss="modal" class="btn-verde hvr-float-shadow">{{'language.no' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

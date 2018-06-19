@@ -1,0 +1,14 @@
+<div ng-include="'views/templates/main/modal-register.html'"></div>
+<div id="loading-modal" class="loading-modal">
+	<img class="loading-image" src="images/loading-spin.svg">
+</div>
+<div ng-if="typeOfRegister === 'Student'" ng-include="'views/templates/main/modal-img-upload.html'"></div>
+<div ng-include="'views/templates/main/register-header.html'"></div>
+<div class="container-register" ng-init="openModalRegister()">
+    <div class="jumbotron">
+        <div class="row">
+            <div ng-if="typeOfRegister === 'Student'" ng-include="'views/main/register/studentForm.html'"></div>
+            <div ng-if="typeOfRegister === 'Institute'" ng-include="'views/main/register/instituteForm.html'"></div>
+        </div>
+    </div>
+</div>

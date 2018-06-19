@@ -1,0 +1,164 @@
+<div ng-include="'views/templates/main/modal-login.html'"></div>
+<div id="loading-modal" class="loading-modal">
+	<img class="loading-image" src="images/loading-spin.svg">
+</div>
+<div class="row" style="margin: 0px; padding: 0px;">
+	<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" style="margin: 0px; padding: 0px;">
+		<div class="" id="lado-esquerdo" style="display: none;">
+			<div id="view-descktop">
+				<center>
+					<div class="" style="padding-top: 500px;" id="logo">
+						<img src="../../images/logo.png" class="img-fluid">
+					</div>
+
+					<div class="" id="texto-01">
+						<div style="color:#BCBCBF; font-size: 20px;">{{"main.title" | translate}}</div>
+					</div>
+					<div class="" style="" id="texto-02">
+						<div style="font-size: 35px;" class="">{{"main.text1" | translate}}<br />{{"main.text2" | translate}}<br />{{"main.text3" | translate}}</div>
+					</div>
+					<div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 text-center" style="" id="btn-registrar">
+						<a href="#/register" class="link-registrar-btn">
+							<div class="btn-azul-principal hvr-float-shadow">{{"main.register" | translate}}</div>
+						</a>
+					</div>
+				</center>
+			</div>
+			<div id="view-mobile" class="">
+				<center>
+					<div class="" style="padding-top: 10%; ">
+						<img src="../../images/logo.png" class="img-fluid" width="280">
+					</div>
+					<div class="" style="padding-top: 15%; ">
+						<div style="color:#BCBCBF; font-size: 20px;">{{"main.title" | translate}}</div>
+					</div>
+					<div class="" style="padding-top: 5%; ">
+						<div style="font-size: 30px; " class="">{{"main.text1" | translate}}<br />{{"main.text2" | translate}}<br />{{"main.text3" | translate}}</div>
+					</div>
+					<div class="text-center" style="padding-top: 10%; padding-bottom: 5%; ">
+						<a href="#/register" class="link-registrar-btn">
+							<div class="btn-azul-principal hvr-float-shadow">{{"main.register" | translate}}</div>
+						</a>
+					</div>
+					<br />
+					<div class="row" style="margin: 0px;">
+						<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xs-6">
+							<a href="#btn-login" class="link-cinza" data-toggle="modal" data-target=".bd-example-modal-sm">Minha Conta</a>
+						</div>
+						<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xs-6 ">
+							<a href="#/how-works" class="link-cinza">{{"main.link" | translate}}</a>
+						</div>
+					</div>
+					<br />
+					<div class="row" style="margin: 0px;">
+						<div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 col-4"></div>
+						<div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 col-4">
+							<div class="col-xs-6 col-lg-6 col-md-6 col-sm-6 col-6">
+								<a href="#" ng-click="changeLanguage('pt')" class="">
+									<img src="../../images/brasil.png" class="hvr-float-shadow" style="height: 40px;">  
+								</a>
+							</div>
+							<div class=" col-xs-6 col-lg-6 col-md-6 col-sm-6 col-6">
+								<a href="#" ng-click="changeLanguage('en')">
+								   <img src="../../images/eua.png" class="hvr-float-shadow" style="height: 40px;">  
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 col-4"></div>
+					</div>
+					<br />
+				</center>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" style="padding: 0px; margin: 0px;">
+		<div id="btn-fixo" style="">
+			<div class="row" style="z-index: 3; position: relative; top: 80px; margin: 0px; padding: 0px;">
+				<div class="col-xs-3 col-lg-3 col-md-3 col-sm-3">
+					<div class="row">
+						<div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
+							<a href="#" ng-click="changeLanguage('pt')" class="">
+							  <img src="../../images/brasil.png" class="hvr-float-shadow" style="height: 40px;">  
+						  </a>
+						</div>
+						<div class=" col-xs-6 col-lg-6 col-md-6 col-sm-6">
+							<a href="#" ng-click="changeLanguage('en')">
+							 <img src="../../images/eua.png" class="hvr-float-shadow" style="height: 40px;">  
+						  </a>
+						</div>
+					</div>
+				</div>
+				<div class="col col-xs-3 col-lg-3 col-md-3 col-sm-3">
+					<a href="#/how-works" class="link-branco">{{"main.link" | translate}}</a>
+				</div>
+				<div class="col col-xs-3 col-lg-3 col-md-3 col-sm-3">
+					<a href="#/register" class="link-branco">{{"main.register" | translate}}</a>
+				</div>
+				<div class="col col-xs-3 col-lg-3 col-md-3 col-sm-3">
+					<div id="btn-login" class="btn-branco hvr-float-shadow" data-toggle="modal" data-target=".bd-example-modal-sm">{{"main.account" | translate}}</div>
+				</div>
+			</div>
+		</div>
+		<div id="">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" style="">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner" role="listbox">
+					<div class="item active" style="">
+						<img src="../../images/01.jpg" alt="Los Angeles" class="imagem" id="" style="width: 100%;">
+						<div class="carousel-caption">
+							<!-- <h3>Los Angeles</h3>
+							<p>LA is always so much fun!</p> -->
+						</div>
+					</div>
+					<div class="item" style="">
+						<img src="../../images/02.jpeg" alt="Los Angeles" class="imagem" id="" style="width: 100%;">
+						<div class="carousel-caption">
+							<!-- <h3>Los Angeles</h3>
+							<p>LA is always so much fun!</p> -->
+						</div>
+					</div>
+					<div class="item" style="">
+						<img src="../../images/03.jpeg" alt="Los Angeles" class="imagem" id="" style="width: 100%;">
+						<div class="carousel-caption">
+							<!-- <h3>Los Angeles</h3>
+							<p>LA is always so much fun!</p> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var largura = $(window).width();
+	var altura = $(window).height();
+
+	if (largura <= 600) {
+		altura = altura / 2;
+	}
+
+	$("#logo").css("padding-top", (altura * 10) / 100);
+	$("#texto-01").css("padding-top", (altura * 15) / 100);
+	$("#texto-02").css("padding-top", (altura * 10) / 100);
+	$("#btn-registrar").css("padding-top", (altura * 12) / 100);
+
+	$(".imagem").css("height", altura);
+
+	//window.onload = function() {
+	document.getElementById("lado-esquerdo").setAttribute("Style", " display: block;");
+	var ladoEsquerdo = document.getElementById("lado-esquerdo");
+	ladoEsquerdo.id = "carregar-lado-esquerdo";
+	//};
+
+	$('.carousel').carousel();
+
+	function closeModal(modal) {
+		$('#' + modal).modal('hide')
+	}
+
+</script>

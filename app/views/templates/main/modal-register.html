@@ -1,0 +1,16 @@
+<div id="modal-register" data-backdrop="static" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-azul" style="border-radius: 8px;height: 50px;">
+                <h5 class="modal-title" style="font-weight: bold;font-size: 13pt;">{{"register.ask" | translate}}</h5>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center;">
+                    <button ng-click="setTypeOfRegister('Student')" data-dismiss="modal" class="btn-branco-2 hvr-float-shadow">{{"register.student" | translate}}</button>
+                    <button ng-click="setTypeOfRegister('Institute')" data-dismiss="modal" class="btn-roxo-2 hvr-float-shadow">{{"register.institute" | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

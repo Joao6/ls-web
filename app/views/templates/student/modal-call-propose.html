@@ -1,0 +1,31 @@
+<div id="callPropose" class="modal fade modal-6" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-azul">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">Solicitação de chamada</h4>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <a href="">
+                                <img src="../../images/cancelar.png" style="width: 30px;" />
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div>
+                        <img src="../../images/ligacao.png"> Deseja solicitar um bate papo com
+                        <b>{{elderlyProposeCall.nome}}</b>?
+                    </div>
+                    <br />
+                    <button type="button" ng-click="callElderlyVinculo(elderlyProposeCall.id)" data-dismiss="modal" class="btn-azul hvr-float-shadow">Confirmar</button>
+                    <button type="button" class="btn-cinza-modal hvr-float-shadow" data-dismiss="modal">Cancelar</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>

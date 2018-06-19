@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="styles/bootstrap/material-dashboard.css">
+<div ng-include="'views/templates/student-side-nav.html'"></div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/student-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container">
+        <section id="content" style="margin-top: 8%;">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">                        
+                        <h3 class="gradient-text-blue">{{'progress.title' | translate}}</h3>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+                                    <i class="fa fa-comments"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">{{'progress.calls' | translate}}</p>
+                                    <h3 class="title">{{callCount}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="purple">
+                                    <i class="fa fa-chain"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">{{'progress.associeted' | translate}}</p>
+                                    <h3 class="title">{{associetedCount}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="green">
+                                    <i class="fa fa-bar-chart"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">{{'progress.avaliationCall' | translate}}</p>
+                                    <h3 class="title">{{avaliationCall}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="red">
+                                    <i class="fa fa-thumbs-o-down"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">{{'progress.reports' | translate}}</p>
+                                    <h3 class="title">{{reports}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

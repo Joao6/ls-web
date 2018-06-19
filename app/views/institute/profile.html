@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
+<style>
+    #viewDiv {
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        top: 68px;
+    }
+</style>
+<div id="loading-modal" class="loading-modal">
+    <img class="loading-image" src="images/loading-spin.svg">
+</div>
+<div ng-include="'views/templates/institute-side-nav.html'"></div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/institute-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container" ng-init="loadMap(userLogged)">
+        <section id="content">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">
+                        <form class="form" name="formInstitute">
+                            <div class="row-same-height">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-sm-height">                                    
+                                    <h3 class="gradient-text-blue">{{'ins.title' | translate}}</h3>
+                                    <div id="input-name" class="form-group has-feedback">
+                                        <div class="col-lg-12">
+                                            <label for="institute-name" class="label-blue">{{'profile.name' | translate}}</label>
+                                            <input id="institute-name" name="name" type="text" class="form-control input-large" placeholder="{{'profile.name' | translate}}" ng-model="userLogged.nome" ng-required="true">                                            
+                                            <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': formInstitute.name.$valid, 'glyphicon-remove-circle': formInstitute.name.$error}"></span>
+                                        </div>
+                                    </div>
+                                    <div id="input-email" class="form-group has-feedback">
+                                        <div class="col-lg-12 input-separate">
+                                            <label for="institute-email" class="label-blue">{{'profile.email' | translate}}</label>
+                                            <input id="institute-email" name="email" type="email" class="form-control input-large" placeholder="{{'profile.email.placeholder' | translate}}" ng-model="userLogged.email"
+                                                ng-required="true">
+                                                <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': formInstitute.email.$valid, 'glyphicon-remove-circle': formInstitute.email.$error}"></span>
+                                        </div>
+                                    </div>
+                                    <div id="input-telefone" class="form-group has-feedback">
+                                        <div class="col-lg-12 input-separate">
+                                            <label for="institute-telefone" class="label-blue">{{'register.tel' | translate}}</label>
+                                            <input id="institute-telefone" name="telefone" type="text" class="form-control input-large" placeholder="{{'register.tel' | translate}}" ng-model="userLogged.telefone"
+                                                ng-required="true">
+                                                <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': formInstitute.telefone.$valid, 'glyphicon-remove-circle': formInstitute.telefone.$error}"></span>
+                                        </div>
+                                    </div>
+                                    <div id="input-registro" class="form-group has-feedback">
+                                        <div class="col-lg-12 input-separate">
+                                            <label for="institute-register" class="label-blue">{{'register.cod' | translate}}</label>
+                                            <input id="institute.register" name="register" type="text" class="form-control input-large" placeholder="{{'register.cod.institute' | translate}}" ng-model="userLogged.registroLegal"
+                                                ng-required="true">
+                                                <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-circle': formInstitute.register.$valid, 'glyphicon-remove-circle': formInstitute.register.$error}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-sm-height">
+                                    <h4 class="title-content">{{'ins.locale' | translate}}</h4>
+                                    <div class="align-center-content">                                        
+                                        <div id="viewDiv"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="col-lg-12" style="margin-top: 10px;">
+                                    <div class="btn-full btn-azul-principal hvr-float-shadow" ng-click="updateProfile(userLogged)">{{'profile.save' | translate}}</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

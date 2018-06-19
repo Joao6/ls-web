@@ -1,0 +1,80 @@
+<div id="modalFeedback" class="modal fade modal-2" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-radius: 8px;">
+            <div class="modal-header fundo-cabecalho-modal-azul">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <h4 class="modal-title">{{"feedbackCall.title" | translate}}</h4>
+                    </div>                    
+                </div>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div>
+                        <b>{{userLogged.nome}},</b> {{"feedbackCall.body1" | translate}}
+                        <br />
+                        {{"feedbackCall.body2" | translate}}
+                    </div>
+                    <br />
+                    <img src="../../images/estrela-vazia.png" id="estrela1" class="hvr-float-shadow" style="cursor: pointer;">
+                    <img src="../../images/estrela-vazia.png" id="estrela2" class="hvr-float-shadow" style="cursor: pointer;">
+                    <img src="../../images/estrela-vazia.png" id="estrela3" class="hvr-float-shadow" style="cursor: pointer;">
+                    <img src="../../images/estrela-vazia.png" id="estrela4" class="hvr-float-shadow" style="cursor: pointer;">
+                    <img src="../../images/estrela-vazia.png" id="estrela5" class="hvr-float-shadow" style="cursor: pointer;">
+                    <input type="hidden" name="pontuacao" id="pontuacao" ng-model="call.feedback">
+                    <br /><br />
+                    <button type="button" class="btn-azul hvr-float-shadow" data-dismiss="modal" ng-click="saveCall(call)">{{"feedbackCall.confirm" | translate}}</button>
+                    ou
+                    <button type="button" data-dismiss="modal" ng-click="openModal('modalReportFinish')" class="btn-vermelho hvr-float-shadow">Reportar abuso</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#estrela1").click().hover(function(){
+      $('#estrela1').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela2').attr('src', '../../images/estrela-vazia.png');
+      $('#estrela3').attr('src', '../../images/estrela-vazia.png');
+      $('#estrela4').attr('src', '../../images/estrela-vazia.png');
+      $('#estrela5').attr('src', '../../images/estrela-vazia.png');
+      $('#pontuacao').val("1");
+    });
+
+    $("#estrela2").click().hover(function(){
+      $('#estrela1').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela2').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela3').attr('src', '../../images/estrela-vazia.png');
+      $('#estrela4').attr('src', '../../images/estrela-vazia.png');
+      $('#estrela5').attr('src', '../../images/estrela-vazia.png');
+      $('#pontuacao').val("2");
+    });
+
+    $("#estrela3").click().hover(function(){
+      $('#estrela1').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela2').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela3').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela4').attr('src', '../../images/estrela-vazia.png');
+      $('#estrela5').attr('src', '../../images/estrela-vazia.png');
+      $('#pontuacao').val("3");
+    });
+
+    $("#estrela4").click().hover(function(){
+      $('#estrela1').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela2').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela3').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela4').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela5').attr('src', '../../images/estrela-vazia.png');
+      $('#pontuacao').val("4");
+    });
+
+    $("#estrela5").click().hover(function(){
+      $('#estrela1').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela2').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela3').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela4').attr('src', '../../images/estrela-pontuada.png');
+      $('#estrela5').attr('src', '../../images/estrela-pontuada.png');
+      $('#pontuacao').val("5");
+    });
+</script>
+

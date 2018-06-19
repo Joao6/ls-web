@@ -1,0 +1,77 @@
+<div ng-include="'views/templates/institute/modal-report.html'"></div>
+<div ng-include="'views/templates/student-side-nav.html'"></div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/student-header.html'"></div>
+</section>
+<div id="content-without-side-nav" ng-init="getReportList(userLogged.id, search, typeReport, offset)">
+    <div class="container">
+        <section id="content" style="margin-top: 70px;">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">                            
+                            <h3 class="gradient-text-blue">{{'student.reports.title' | translate}}</h3>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12" style="margin-top: 10px;">
+                            <div id="input-name" class="form-group has-feedback">
+                                <input id="search" type="text" class="form-control input-large" ng-change="getReportList(userLogged.id, search, typeReport, offset)"
+                                    placeholder="{{'student.reports.search' | translate}}" ng-model="search">
+                                <span class="glyphicon glyphicon-search form-control-feedback" style="top: 0px;"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                            <div id="select-status" class="form-group">
+                                <select class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input-large" ng-change="getReportList(userLogged.id, search, typeReport, offset)"
+                                    ng-model="typeReport" style="color: #999999;">
+                                    <option ng-selected="true" ng-disabled="true">{{'student.reports.doit' | translate}}</option>
+                                    <option value="">{{'student.reports.any' | translate}}</option>
+                                    <option value="estudante">{{'student.reports.you' | translate}}</option>
+                                    <option value="idoso">{{'student.reports.againstYou' | translate}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="reportListIsEmpty()">
+                        <div style="margin-top: 15px;">
+                            <img class="img img-responsive" src="../../images/idosos-home.png">
+                            <h4>{{'student.reports.error' | translate}}</h4>
+                        </div>
+                    </div>
+                    <div ng-hide="reportListIsEmpty()">
+                        <div class="row panel-list-separate" ng-repeat="report in reportList">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel-list" style="margin-bottom: 5px;">
+                                    <div class="row" style="padding: 2px;">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <h5>
+                                                <span class="span-list">{{'student.reports.tutor' | translate}}: </span>{{report.idoso.nome}}
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <h5>
+                                                <span class="span-list">{{'student.reports.doit' | translate}}: </span>{{report.tipo | uppercase}}
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                            <button ng-click="openModalReport('detailReport', report)" class="btn-roxo-2 hvr-float-shadow">{{'student.reports.details' | translate}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <center style="margin: 25px auto 10px auto;">
+                                <a ng-class="{'disabled-link': (offset - 10) < 0}" ng-if="(offset - 10) >= 0" href="" ng-click="paginationReport(userLogged.id, search, typeReport, offset - 10, 'previous')">
+                                    <img class="hvr-float-shadow" style="margin-right: 10px;" src="../../images/arrow-left.png">
+                                </a>
+                                <a ng-class="{'disabled-link': (offset + 10) >= count}" ng-if="(offset + 10) < count" href="" ng-click="paginationReport(userLogged.id, search, typeReport, offset + 10, 'next')">
+                                    <img class="hvr-float-shadow" style="margin-left: 10px;" src="../../images/arrow-right.png">
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

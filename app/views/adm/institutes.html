@@ -1,0 +1,95 @@
+<div id="loading-modal" class="loading-modal">
+    <img class="loading-image" src="images/loading-spin.svg">
+</div>
+<div ng-include="'views/templates/adm/modal-validateRegister.html'"></div>
+<div ng-include="'views/templates/adm/adm-side-nav.html'">
+</div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/adm/adm-header.html'"></div>
+</section>
+<div id="content-without-side-nav">
+    <div class="container">
+        <section id="content">
+            <div class="jumbotron">
+                <div class="content-padding">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <h3 class="gradient-text-blue">{{'adm.institutes' | translate}}</h3>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                            <div id="input-name" class="form-group has-feedback">
+                                <input id="search" type="text" class="form-control input-large" placeholder="{{'adm.search.institute' | translate}}" ng-change="getInstitutes(search,status)"
+                                    ng-model="search">
+                                <span class="glyphicon glyphicon-search form-control-feedback" style="margin-top: auto;"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                            <div id="select-status" class="form-group">
+                                <select class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input-large" ng-change="getInstitutes(search,status)" ng-model="status"
+                                    style="color: #999999;">
+                                    <option ng-selected="true" ng-disabled="true">Status</option>
+                                    <option value="">{{'adm.all' | translate}}</option>
+                                    <option value="ins">{{'adm.ok' | translate}}</option>
+                                    <option value="dins">{{'adm.nok' | translate}}</option>
+                                    <option value="ains">{{'adm.wait' | translate}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="instituteListIsEmpty()">
+                        <div style="margin-top: 15px;">
+                            <img class="img img-responsive" src="../../images/idosos-home.png">
+                            <h4>{{'adm.status.error' | translate}}</h4>
+                        </div>
+                    </div>
+                    <div ng-hide="instituteListIsEmpty()">
+                        <div class="row panel-list-separate" ng-repeat="institute in instituteList" style="margin-top: 20px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="panel-list">
+                                    <div class="row" style="padding: 8px;">
+                                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                                            <h5>
+                                                <span class="span-list">{{'list.name' | translate}}</span>{{institute.nome}}</h5>
+                                            <h5>
+                                                <span class="span-list">{{'list.email' | translate}}</span>{{institute.email}}</h5>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <h5>
+                                                <span class="span-list">{{'list.cod' | translate}}</span>{{institute.registroLegal}}
+                                            </h5>
+                                            <h5 ng-show="institute.tipo === 'ins'">
+                                                <span class="span-list">{{'list.status' | translate}}: </span>{{'adm.ok' | translate}}
+                                            </h5>
+                                            <h5 ng-show="institute.tipo === 'ains'">
+                                                <span class="span-list">{{'list.status' | translate}}: </span>{{'adm.wait' | translate}}
+                                            </h5>
+                                            <h5 ng-show="institute.tipo === 'dins'">
+                                                <span class="span-list">{{'list.status' | translate}}: </span>{{'adm.nok' | translate}}
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+                                            <h4 class="col-lg-offset-1 col-md-offset-1">{{'list.adm' | translate}}</h4>
+                                            <a href="#/adm/institutes/{{institute.id}}/details">
+                                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 btn-branco-2 hvr-float-shadow col-lg-offset-1 col-md-offset-1">{{'list.details' | translate}}</div>
+                                            </a>
+                                            <div ng-class="{'disabled-link': institute.tipo === 'ins'}" ng-click="openModal('validateRegister', institute)" class="col-lg-5 col-md-5 col-sm-12 col-xs-12 btn-roxo-2 hvr-float-shadow col-lg-offset-1 col-md-offset-1">{{'list.validate' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <center style="margin: 25px auto 10px auto;">
+                                <a ng-class="{'disabled-link': (offset - 10) < 0}" ng-if="(offset - 10) >= 0" href="" ng-click="pagination(search, status, offset - 10, 'previous')">
+                                    <img class="hvr-float-shadow" style="margin-right: 10px;" src="../../images/arrow-left.png">
+                                </a>
+                                <a ng-class="{'disabled-link': (offset + 10) >= count}" ng-if="(offset + 10) < count" href="" ng-click="pagination(search, status, offset + 10, 'next')">
+                                    <img class="hvr-float-shadow" style="margin-left: 10px;" src="../../images/arrow-right.png">
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        </div>
+    </div>

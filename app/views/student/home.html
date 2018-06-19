@@ -1,0 +1,57 @@
+<!-- aqui será a página do estudante, onde ele verá um mapa com os idosos disponíveis -->
+<link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    html,
+    body,
+    #viewDiv {
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+<div ng-include="'views/templates/student/modal-call-propose.html'"></div>
+<div ng-include="'views/templates/student-side-nav.html'"></div>
+<section id="header" class="header-fixed">
+    <div ng-include="'views/templates/student-header.html'"></div>
+</section>
+<div id="content-without-side-nav" ng-init="getVinculoList()">
+    <div class="container">
+        <section id="content" style="margin-top: 70px;">
+            <div class="jumbotron">
+                <div class="content-paddng">
+                    <div class="row">
+                        <div id="viewDiv"></div>
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6" style="margin-top: 10px;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">{{ 'list.associated' | translate }}</div>
+                                <div class="panel-body">
+                                    <a ng-repeat="vinculo in vinculoList" ng-click="openModal('callPropose', vinculo.idoso)" ng-mouseover="showPopover()" ng-mouseleave="hidePopover()"
+                                        style="cursor:pointer;text-decoration: none;">
+                                        <div style="font-weight: bold;border-bottom: 1px solid #e2e2e2;padding: 5px;">
+                                            <img class="img-circle" id="{{vinculo.idoso.id}}" src="{{vinculo.idoso.imagem || 'https://i.imgur.com/9RAAfJ5.png'}}" width="40" height="40" style="border: 3px solid #3a3a3a;"> {{vinculo.idoso.nome | limitTo:8}}...
+                                        </div>                                        
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-sm-6 col-xs-6" style="margin-top: 10px;">
+                            <div id="select-status" class="form-group">
+                                <select class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input-large" ng-change="getElderly()" ng-model="linguaId" style="color: #999999;">
+                                    <option ng-repeat="lingua in linguaList" value="{{lingua.id}}">{{lingua.nome}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="../../scripts/jquery/studentHome.js"></script>
+<script>$('[data-toggle="popover"]').popover(); </script>

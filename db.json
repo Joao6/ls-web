@@ -1,0 +1,83 @@
+{
+  "students": [
+    {
+      "nome": "Joao",
+      "email": "joao@gmail.com",
+      "senha": "123",
+      "id": 4
+    },
+    {
+      "nome": "Pedro",
+      "email": "pedro@gmail.com",
+      "senha": "123",
+      "id": 5
+    },
+    {
+      "nome": "Diego",
+      "email": "diego@gmail.com",
+      "senha": "123",
+      "id": 6
+    },
+    {
+      "nome": "Marcos",
+      "email": "marcos@gmail.com",
+      "senha": "123",
+      "id": 7
+    },
+    {
+      "nome": "André",
+      "email": "andre@gmail.com",
+      "senha": "123",
+      "id": 8
+    },
+    {
+      "nome": "Mauricio",
+      "email": "mauricio@gmail.com",
+      "senha": "123",
+      "id": 9
+    }
+  ],
+  "institutes": [
+    {
+      "nome": "Asilo dos States",
+      "email": "asilo@gmail.com",
+      "senha": "123",
+      "telefone": "35998606677",
+      "registroLegal": "123456",
+      "id": 1
+    },
+    {
+      "nome": "Asilo de congonhal",
+      "email": "ascongonhal@gmail.com",
+      "senha": "123",
+      "telefone": "35998606677",
+      "registroLegal": "1234789",
+      "id": 2
+    },
+    {
+      "nome": "Asilo de Santa Rita atualizado",
+      "email": "asilosrs@gmail.com",
+      "senha": "123",
+      "telefone": "35998606677",
+      "registroLegal": "1234789",
+      "id": 3
+    }
+  ],
+  "administrator": [
+    {
+      "id": 1,
+      "nome": "Joao Pedro de Paula",
+      "senha": "123",
+      "email": "joaopedro@gmail.com"
+    }
+  ],
+  "users":[
+    {
+      "id": 1,
+      "name": "Joao",
+      "password": "123",
+      "email": "joao@gmail.com",
+      "type": "adm"
+    }
+  ]
+}
