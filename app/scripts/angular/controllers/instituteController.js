@@ -4,14 +4,27 @@ angular.module('lifeStories').controller('instituteController', function ($scope
     $scope.count = 0
     $scope.linguaList = []
     $scope.linguaListIdoso = []
-    $scope.reportList = []    
+    $scope.reportList = []
     $scope.typeReport = ""
     $scope.search = ""
 
-    $scope.linguas = [{ 'id': 3, 'nome': 'Inglês' },
-    { 'id': 6, 'nome': 'Português' },
-    { 'id': 2, 'nome': 'Espanhol' },
-    { 'id': 18, 'nome': 'Francês' }]
+    $scope.currentLanguage = $translate.use();
+
+    $scope.loadLinguas = (language) => {
+        if (language == 'pt') {
+            $scope.linguas = [{ 'id': 3, 'nome': 'Inglês' },
+            { 'id': 6, 'nome': 'Português' },
+            { 'id': 2, 'nome': 'Espanhol' },
+            { 'id': 18, 'nome': 'Francês' }];
+        } else {
+            $scope.linguas = [{ 'id': 3, 'nome': 'English' },
+            { 'id': 6, 'nome': 'Portuguese' },
+            { 'id': 2, 'nome': 'Spanish' },
+            { 'id': 18, 'nome': 'French' }];
+        }
+    }
+
+    $scope.loadLinguas($scope.currentLanguage);
 
     if (userLogged) {
         $rootScope.userLogged = userLogged.data
@@ -184,20 +197,22 @@ angular.module('lifeStories').controller('instituteController', function ($scope
         $('#' + modal).modal()
     }
 
-    $scope.openModalReport = (modal, report) => {        
+    $scope.openModalReport = (modal, report) => {
         $scope.report = report
         $('#' + modal).modal()
     }
 
     $scope.changeLanguage = (language) => {
-        $translate.use(language)
+        $scope.currentLanguage = language;
+        $translate.use(language);
+        $scope.loadLinguas($scope.currentLanguage);
     }
 
     $scope.validateLanguage = (idLingua) => {
         var validation = false;
         if ($scope.elderly && $scope.elderly.linguaList) {
-            for(var i = 0; i < $scope.elderly.linguaList.length; i++){
-                if(idLingua == $scope.elderly.linguaList[i].id){
+            for (var i = 0; i < $scope.elderly.linguaList.length; i++) {
+                if (idLingua == $scope.elderly.linguaList[i].id) {
                     validation = true;
                     if ($scope.linguaListIdoso.indexOf($scope.elderly.linguaList[i]) == -1)
                         $scope.linguaListIdoso.push($scope.elderly.linguaList[i])
@@ -213,16 +228,16 @@ angular.module('lifeStories').controller('instituteController', function ($scope
     $scope.editLingua = (lingua) => {
         let index = 0;
         var isExistent = false;
-        for(var i = 0; i< $scope.linguaListIdoso.length; i++){
-            if($scope.linguaListIdoso[i].id == lingua.id){
+        for (var i = 0; i < $scope.linguaListIdoso.length; i++) {
+            if ($scope.linguaListIdoso[i].id == lingua.id) {
                 isExistent = true;
                 index = i;
                 break;
             }
         }
-        if(isExistent){
+        if (isExistent) {
             $scope.linguaListIdoso.splice(index, 1);
-        }else{
+        } else {
             $scope.linguaListIdoso.push(lingua);
         }
         $scope.elderly.linguaList = $scope.linguaListIdoso
