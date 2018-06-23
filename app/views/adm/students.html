@@ -51,18 +51,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <center style="margin: 25px auto 10px auto;">
-                                    <a ng-class="{'disabled-link': (offset - 10) < 0}" ng-if="(offset - 10) >= 0" href="" ng-click="paginationStudent(search, offset - 10, 'previous')">
-                                        <img class="hvr-float-shadow" style="margin-right: 10px;" src="../../images/arrow-left.png">
-                                    </a>
-                                    <a ng-class="{'disabled-link': (offset + 10) >= count}" ng-if="(offset + 10) < count" href="" ng-click="paginationStudent(search, offset + 10, 'next')">
-                                        <img class="hvr-float-shadow" style="margin-left: 10px;" src="../../images/arrow-right.png">
-                                    </a>
-                                </center>
-                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <center style="margin: 25px auto 10px auto;">
+                                <a ng-class="{'disabled-link': (offset - 10) < 0}" ng-if="(offset - 10) >= 0" href="" ng-click="paginationStudent(search, offset - 10, 'previous')">
+                                    <img class="hvr-float-shadow" style="margin-right: 10px;" src="../../images/arrow-left.png">
+                                </a>
+                                <a ng-class="{'disabled-link': (offset + 10) >= count}" ng-if="(offset + 10) < count" href="" ng-click="paginationStudent(search, offset + 10, 'next')">
+                                    <img class="hvr-float-shadow" style="margin-left: 10px;" src="../../images/arrow-right.png">
+                                </a>
+                            </center>
                         </div>
                     </div>
+                </div>
+            </div>
         </section>
-        </div>
-        </div>
+    </div>
+</div>
