@@ -17,7 +17,7 @@ aria-hidden="true">
             </div>
         </div>
         <div class="modal-body" style="height: 300px;overflow: auto;">                
-            <div ng-repeat="lingua in linguaList">
+            <div ng-repeat="lingua in linguaList | orderBy: '+nome'">
                 <div class="checkbox" >
                     <label style="color: #888888;font-weight: bold;font-size: 12pt;">
                         <input ng-click="editLingua(lingua)" id="value" type="checkbox" value="{{lingua.id}}" ng-model="linguaIdoso" ng-checked="validateLanguage(lingua.id)">
