@@ -8,7 +8,7 @@ angular
     $scope.recoveryCode = $stateParams.recoveryCode
     $scope.user = {}
     $scope.objectRecovery = {}
-    let messageEmail = 'Olá, para alterar sua senha, acesse o seguinte link https://localhost:3000/#/recovery-password/'
+    let messageEmail = 'Olá, para alterar sua senha, acesse o seguinte link https://ls-web.herokuapp.com/#/recovery-password/'
 
     $scope.getStudents = function () {
       userAPI.getStudents().success(function (data) {
@@ -133,7 +133,12 @@ angular
     }
 
     $scope.closeModal = () => {
-      $('.modal-backdrop').remove(); 
+      var modal = $('.modal-backdrop');
+      if(modal){
+        $('.modal-backdrop').remove(); 
+      }
     }
+
+    $scope.closeModal();
 
   });
