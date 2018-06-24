@@ -63,7 +63,7 @@ angular.module('lifeStories').factory('elderlyWebSocket', function ($websocket, 
             call.answer($rootScope.streamLocal); // Answer the call with an A/V stream.
             call.on('stream', function (remoteStream) {
                 console.log("evt ", evt)
-                remoteVideo.src = window.URL.createObjectURL(remoteStream);
+                remoteVideo.srcObject = remoteStream;
             });
             call.on('close', function () {
                 //quando o estudante desliga
@@ -113,7 +113,7 @@ angular.module('lifeStories').factory('elderlyWebSocket', function ($websocket, 
     }
 
     function startRecording() {
-        recordedBlobs = [];
+        /*recordedBlobs = [];
         var options = { mimeType: 'video/webm;codecs=vp9' };
         if (!MediaRecorder.isTypeSupported(options.mimeType)) {
             console.log(options.mimeType + ' is not Supported');
@@ -140,7 +140,7 @@ angular.module('lifeStories').factory('elderlyWebSocket', function ($websocket, 
         mediaRecorder.onstop = handleStop;
         mediaRecorder.ondataavailable = handleDataAvailable;
         mediaRecorder.start(10); // collect 10ms of data
-        console.log('MediaRecorder started', mediaRecorder);
+        console.log('MediaRecorder started', mediaRecorder);*/
     }
 
     function handleDataAvailable(event) {
@@ -154,14 +154,14 @@ angular.module('lifeStories').factory('elderlyWebSocket', function ($websocket, 
     }
 
     function stopRecording() {
-        if (mediaRecorder != undefined && mediaRecorder.state != 'inactive') {
+        /*if (mediaRecorder != undefined && mediaRecorder.state != 'inactive') {
             mediaRecorder.stop();
             download();
-        }
+        }*/
     }
 
     function download() {
-        var blob = new Blob(recordedBlobs, { type: 'audio/wav' });
+        /*var blob = new Blob(recordedBlobs, { type: 'audio/wav' });
         var url = window.URL.createObjectURL(blob);
         var a = document.createElement('a');
         a.style.display = 'none';
@@ -172,7 +172,7 @@ angular.module('lifeStories').factory('elderlyWebSocket', function ($websocket, 
         setTimeout(function () {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-        }, 100);
+        }, 100);*/
     }
 
 

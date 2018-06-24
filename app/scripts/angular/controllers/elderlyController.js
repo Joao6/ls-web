@@ -121,7 +121,7 @@ angular.module('lifeStories').controller('elderlyController', function ($scope, 
     }
 
     function handleVideo(stream) {
-        $rootScope.userVideo.src = window.URL.createObjectURL(stream);
+        $rootScope.userVideo.srcObject = stream;
         $rootScope.streamLocal = stream;
     }
 

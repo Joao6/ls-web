@@ -63,7 +63,7 @@ angular.module('lifeStories').factory('studentRTCSocket', function ($location ,$
             console.log('chamou')
             startRecording();
             call.on('stream', function (remoteStream) {
-                remoteVideo.src = window.URL.createObjectURL(remoteStream);
+                remoteVideo.srcObject = remoteStream;
                 console.log('conectou')
             });
 
@@ -98,7 +98,7 @@ angular.module('lifeStories').factory('studentRTCSocket', function ($location ,$
     }
 
     function startRecording() {
-        recordedBlobs = [];
+        /*recordedBlobs = [];
         var options = { mimeType: 'video/webm;codecs=vp9' };
         if (!MediaRecorder.isTypeSupported(options.mimeType)) {
             console.log(options.mimeType + ' is not Supported');
@@ -125,7 +125,7 @@ angular.module('lifeStories').factory('studentRTCSocket', function ($location ,$
         mediaRecorder.onstop = handleStop;
         mediaRecorder.ondataavailable = handleDataAvailable;
         mediaRecorder.start(10); // collect 10ms of data
-        console.log('MediaRecorder started', mediaRecorder);
+        console.log('MediaRecorder started', mediaRecorder);*/
     }
 
     function handleDataAvailable(event) {
@@ -139,14 +139,14 @@ angular.module('lifeStories').factory('studentRTCSocket', function ($location ,$
     }
 
     function stopRecording() {
-        if (mediaRecorder != undefined && mediaRecorder.state != 'inactive') {
+        /*if (mediaRecorder != undefined && mediaRecorder.state != 'inactive') {
             mediaRecorder.stop();
             download();
-        }
+        }*/
     }
 
     function download() {
-        var blob = new Blob(recordedBlobs, { type: 'audio/wav' });
+        /*var blob = new Blob(recordedBlobs, { type: 'audio/wav' });
         var url = window.URL.createObjectURL(blob);
         var a = document.createElement('a');
         a.style.display = 'none';
@@ -157,7 +157,7 @@ angular.module('lifeStories').factory('studentRTCSocket', function ($location ,$
         setTimeout(function () {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-        }, 100);
+        }, 100);*/
     }
 
     var methods = {

@@ -72,7 +72,7 @@ angular.module('lifeStories').controller('studentRTCController', function ($root
     }
 
     function handleVideo(stream) {
-        userVideo.src = window.URL.createObjectURL(stream);
+        userVideo.srcObject = stream;
         $rootScope.streamLocal = stream;
     }
 
